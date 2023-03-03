@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "extra_roles",
+  "info": {
+    "singularName": "extra-role",
+    "pluralName": "extra-roles",
+    "displayName": "ExtraRole"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

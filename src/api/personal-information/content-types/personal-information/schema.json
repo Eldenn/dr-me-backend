@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personal_informations",
+  "info": {
+    "singularName": "personal-information",
+    "pluralName": "personal-informations",
+    "displayName": "PersonalInformations",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "profilePhoto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "phone": {
+      "type": "string",
+      "regex": "^(?:\\+33|0)[1-9](?:(?:\\d[\\s-]*){8}|\\d{8})$"
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string",
+      "regex": "^\\d{5}$"
+    },
+    "country": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "personalInformation"
+    }
+  }
+}
