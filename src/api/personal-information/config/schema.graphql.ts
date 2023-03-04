@@ -2,17 +2,17 @@ export default {
   definition: ``,
   typeDefs: `
     extend type Query {
-      myPersonalInformation: PersonalInformation
+      myPersonalInformations: PersonalInformation
     }
 
     extend type Mutation {
-      updateMyPersonalInformation(input: PersonalInformationInput): PersonalInformation
+      updateMyPersonalInformations(input: PersonalInformationInput): PersonalInformation
     }
   `,
   type: {},
   resolvers: {
     Query: {
-      myPersonalInformation: {
+      myPersonalInformations: {
         resolve: async (obj, options, ctx) => {
           const { user } = ctx.state;
 
@@ -27,7 +27,7 @@ export default {
       },
     },
     Mutation: {
-      updateMyPersonalInformation: {
+      updateMyPersonalInformations: {
         resolve: async (obj, options, ctx, data) => {
           const { input } = data.variableValues;
           const { user } = ctx.state;
