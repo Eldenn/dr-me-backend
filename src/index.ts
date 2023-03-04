@@ -1,3 +1,6 @@
+import personalInformationExtention from "./api/personal-information/config/schema.graphql";
+// import extraRoleExtention from "./api/extra-role/config/schema.graphql";
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -7,39 +10,8 @@ export default {
    */
   register({ strapi }) {
     const extensionService = strapi.plugin("graphql").service("extension");
-
-    const extension = ({ nexus }) => ({
-      // types: [
-      //   nexus.objectType({
-      //     name: 'Book',
-      //     definition(t) {
-      //       t.string('title');
-      //     },
-      //   }),
-      // ],
-      typeDefs: `
-          type Query {
-            book: Book
-          }
-
-          type Book {
-            title: String
-          }
-      `,
-      resolvers: {
-        Query: {
-          book: {
-            resolve() {
-              return { title: 'Montpellier' };
-            },
-          },
-        },
-      },
-      
-    });
-    
-
-    extensionService.use(extension);
+    extensionService.use(personalInformationExtention);
+    // extensionService.use(extraRoleExtention);
   },
 
   /**
