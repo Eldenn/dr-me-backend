@@ -5,7 +5,42 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }) {
+    const extensionService = strapi.plugin("graphql").service("extension");
+
+    const extension = ({ nexus }) => ({
+      // types: [
+      //   nexus.objectType({
+      //     name: 'Book',
+      //     definition(t) {
+      //       t.string('title');
+      //     },
+      //   }),
+      // ],
+      typeDefs: `
+          type Query {
+            book: Book
+          }
+
+          type Book {
+            title: String
+          }
+      `,
+      resolvers: {
+        Query: {
+          book: {
+            resolve() {
+              return { title: 'Montpellier' };
+            },
+          },
+        },
+      },
+      
+    });
+    
+
+    extensionService.use(extension);
+  },
 
   /**
    * An asynchronous bootstrap function that runs before
