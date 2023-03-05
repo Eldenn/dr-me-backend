@@ -1,5 +1,5 @@
 import personalInformationExtention from "./api/personal-information/config/schema.graphql";
-// import extraRoleExtention from "./api/extra-role/config/schema.graphql";
+import usersPermissionsExtension from "./extensions/users-permissions/config/schema.graphql";
 
 export default {
   /**
@@ -11,7 +11,7 @@ export default {
   register({ strapi }) {
     const extensionService = strapi.plugin("graphql").service("extension");
     extensionService.use(personalInformationExtention);
-    // extensionService.use(extraRoleExtention);
+    extensionService.use(usersPermissionsExtension);
   },
 
   /**
